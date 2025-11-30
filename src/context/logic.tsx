@@ -9,7 +9,7 @@ export const LogicProvide = ({ children }: { children: React.ReactNode }) => {
   const optionMusicalImage = ["🎹", "🎻"]; // option musical instrument
   const optionVolumeImage = ["🔈", "🔉", "🔊"]; // option musical instrument
   const optionVolume = [0.0, 0.3, 0.6]; // option musical instrument
-  const [col, setCol] = useState(15); //num col of matrix
+  const [col, setCol] = useState(10); //num col of matrix
   const [musical, setMusical] = useState(optionMusical[0]); // choice musical instrument
   const [musicalImage, setMusicalImage] = useState(optionMusicalImage[0]); // choice musical instrument
   const [gridMatrix, setGridMatrix] = useState(CreatMatrix(col)); //create matrix
@@ -52,11 +52,6 @@ export const LogicProvide = ({ children }: { children: React.ReactNode }) => {
     volumeRef.current=optionVolume[(optionVolume.indexOf(volumeRef.current)+1)%optionVolume.length]
     setVolumeImage(optionVolumeImage[(optionVolume.indexOf(volumeRef.current))])
   }
-
-
-
- 
-  
 
   const onToggle = (col: number, row: number) => {
     setGridMatrix((prev) => {
