@@ -1,12 +1,12 @@
 import React, {createContext,use,useEffect,useRef,useState,type SetStateAction,} from "react";
 import type Ilogic from "../interface/LogikInterface";
-import { CreateSttMatrix, CreatMatrix } from "../util/CreatMatrix";
+import {  CreatMatrix } from "../util/CreatMatrix";
 
 export const Logic = createContext<Ilogic | undefined>(undefined);
 
 export const LogicProvide = ({ children }: { children: React.ReactNode }) => {
-  const optionMusical = ["piano", "violin"]; // option musical instrument
-  const optionMusicalImage = ["🎹", "🎻"]; // option musical instrument
+  const optionMusical = ["piano", "guitar"]; // option musical instrument
+  const optionMusicalImage = ["🎹", "🎸"]; // option musical instrument
   const optionVolumeImage = ["🔈", "🔉", "🔊"]; // option musical instrument
   const optionVolume = [0.0, 0.3, 0.6]; // option musical instrument
   const [col, setCol] = useState(10); //num col of matrix
@@ -36,6 +36,7 @@ export const LogicProvide = ({ children }: { children: React.ReactNode }) => {
   }, [col]);
 
   const onToggleMusical = () => {
+    setUrlSupa([''])
     setMusical(
       (prev) =>
         optionMusical[(optionMusical.indexOf(prev) + 1) % optionMusical.length]
@@ -78,22 +79,12 @@ export const LogicProvide = ({ children }: { children: React.ReactNode }) => {
     setButtonText("▶️ ");
   };
 
-//   const SUPABASE_SONG_URL = "https://xdralwawezlnciucmunw.supabase.co/storage/v1/object/public/piano/do.mp3";
-
-// useEffect(() => {
-   
-//     setUrlSupa(SUPABASE_SONG_URL);
-
-//     // 2. הפעלת לוגיקה שמשתמשת ב-URL, לדוגמה:
-//     // const audio = new Audio(SUPABASE_SONG_URL);
-//     // audio.play();
-
-// }, [speed]);
-
 useEffect(()=>{
+  console.log("musical :",musical);
+  
   const getUrls=async()=>{
     try {
-      const data=await fetch("http://localhost:3000/music")
+      const data=await fetch(`http://localhost:3000/music/${musical}`)
       if(!data.ok){
         throw new Error ("error fetch supabase url")
       }
@@ -112,7 +103,7 @@ useEffect(()=>{
     return () => {
         clearTimeout(timerId);
     };
-},[])
+},[musical])
 
 
 //   useEffect(() => {

@@ -63,6 +63,8 @@ export const Div = ({ activ, row, col }: Props) => {
 
   const onClick = () => {
     onToggle(col, row);
+    console.log("urlSupa[row]",urlSupa[row]);
+    
     new Audio(urlSupa[row]).play();
     
   };
