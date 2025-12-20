@@ -29,4 +29,7 @@ export default interface Ilogic {
   setCurrentColumn: React.Dispatch<SetStateAction<number>>;
   urlSupa: string[];
   err: boolean;
+  saveProject:()=>void;
+  loadProject:()=>void;
+  
 }

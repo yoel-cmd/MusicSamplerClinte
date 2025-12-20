@@ -1,19 +1,32 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  height: 96vh;
+  width: 100vw;
+  overflow: hidden;
+  box-sizing: border-box;
+  background-color: #cdf2f2;
+}
+
 .header {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 13vh;
-  background-color: #cdf2f2;
+  min-height: 13vh;
+  flex-shrink: 0;
 }
 .body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  background-color: #F0F4F7;
+  flex: 1;
+  min-height: 0;
+  background-color: #f0f4f7;
   margin: 0;
-  padding: 0;
-
+  padding: 10px;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 .footer {
   position: sticky;
@@ -21,11 +34,14 @@
   justify-content: space-between;
   align-items: center;
   height: 13vh;
+  min-height: 13vh;
+  flex-shrink: 0;
   gap: 20px;
-  background-color: #cdf2f2;
-
+  padding: 0 10px;
+  box-sizing: border-box;
+  overflow-x: auto;
 }
-.btn{
+.btn {
   padding: 10px 20px;
   font-size: 20px;
   cursor: pointer;
@@ -35,7 +51,7 @@
   width: 102px;
 }
 .currentColumn {
-  opacity: 0.5;
+  opacity: 0.3;
 }
 
 .img {
@@ -46,57 +62,59 @@
   display: grid;
   grid-auto-flow: column;
   grid-template-rows: repeat(7, 1fr);
- 
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 .grid-music-div {
+  background-color: #cdc9c9;
   display: flex;
   border: 1px solid black;
-  width: 10vw;
-  height: 10vh;
+  border-radius: 7px;
+  min-width: 20px;
+  width: 100%;
+  height: 100%;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
+  flex-shrink: 1;
+  flex-grow: 1;
 }
-
+.grid-music-div:hover {
+  background-color: #00bcd4;
+}
 .btnSpeed {
-    -webkit-appearance: none; 
-    width: 150px; 
-    height: 10px; 
-    background: transparent;
-    cursor: pointer;
-    margin: 5px 0;
+  -webkit-appearance: none;
+  width: 150px;
+  height: 10px;
+  background: transparent;
+  cursor: pointer;
+  margin: 5px 0;
 }
-
 
 .btnSpeed::-webkit-slider-runnable-track {
-    width: 100%;
-    height: 6px; 
-    background: #b2ebf2; 
-    border-radius: 3px;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); 
+  width: 100%;
+  height: 6px;
+  background: #b2ebf2;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
-
 
 .btnSpeed::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    margin-top: -7px; 
-    height: 20px;
-    width: 4px;
-    border-radius: 50%; 
-    background: #00bcd4; 
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); 
-    transition: background-color 0.2s;
+  -webkit-appearance: none;
+  margin-top: -7px;
+  height: 20px;
+  width: 4px;
+  border-radius: 50%;
+  background: #00bcd4;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.2s;
 }
-.loading{
+.loading {
   font-size: 24px;
   font-weight: bold;
   color: #333;
 }
-
-
-
-
-
-
-
-
-

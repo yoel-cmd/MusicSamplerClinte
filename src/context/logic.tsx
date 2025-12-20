@@ -1,6 +1,6 @@
 import React, {createContext,use,useEffect,useRef,useState,type SetStateAction,} from "react";
 import type Ilogic from "../interface/LogikInterface";
-import {  CreatMatrix } from "../util/CreatMatrix";
+import {  CreatMatrix,ConvertGridToIndices,BuildGridFromIndices } from "../util/CreatMatrix";
 
 export const Logic = createContext<Ilogic | undefined>(undefined);
 
@@ -106,22 +106,29 @@ useEffect(()=>{
 },[musical])
 
 
-//   useEffect(() => {
-// const pullUrlInSupa=async()=>{
-//   try {
-//     const url = await fetch("http://localhost:3000/https://xdralwawezlnciucmunw.supabase.co/storage/v1/object/public/piano/do.mp3");
-//     if (!url.ok) {
-//       throw new Error("error fetch supabase url");
-//     }
-//     const data = await url.json();
-//     setUrlSupa(data);
-//   } catch (error) {
-//     console.error("error fetch supabase url:", error);
-//     setErr(true);
-//   }
-// };
-// pullUrlInSupa();
-//   }, [speed]);
+  const saveProject = () => {
+    const songData = ConvertGridToIndices(gridMatrix);
+    localStorage.setItem("mySavedSong", JSON.stringify(songData)); 
+    console.log("Saved song:", songData);
+    alert("Project Saved!");
+  };
+
+  const loadProject = () => {
+    const savedDataString = localStorage.getItem("mySavedSong");
+    
+    if (savedDataString) {
+      const songData = JSON.parse(savedDataString);
+      setCol(songData.length);
+
+      const numRows = urlSupa.length > 0 ? urlSupa.length : 7;
+      const newGrid = BuildGridFromIndices(songData, numRows);
+
+      setGridMatrix(newGrid);
+      console.log("Loaded song!");
+    } else {
+      alert("No saved song found.");
+    }
+  };
 
   const url = {
     piano: [
@@ -169,12 +176,13 @@ useEffect(()=>{
     volumeImage,
     setVolumeImage,
     volumeRef,
-    // toggelVolumeImage,
     onToggelVolume,
     currentColumn,
     setCurrentColumn,
     urlSupa,
     err,
+    loadProject,
+    saveProject,
   };
 
   return (

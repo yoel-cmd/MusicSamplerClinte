@@ -23,10 +23,11 @@ console.log("currentColumn",currentColumn);
     }
 }
 await new Promise((res) => setTimeout(res, speedRef.current));
-  if (currentColumn===gridMatrix.length-1) {
-        setCurrentColumn(0)
+  if (currentColumn === gridMatrix.length - 1) {
+    setCurrentColumn(0);
+  } else {
+    setCurrentColumn((prev) => prev + 1);
   }
-  setCurrentColumn((prev)=>prev+1)
   
 }
 export default play;

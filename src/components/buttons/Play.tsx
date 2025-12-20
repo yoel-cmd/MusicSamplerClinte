@@ -36,35 +36,6 @@ export const Play = () => {
     play({ currentColumn, setCurrentColumn, toggleRunning, gridMatrix, urlSupa, musical, volumeRef, speedRef } );
   },[currentColumn,isRunning.current])
 
-
-  // const play = async () => {
-  //   toggleRunning();
-  //   let currentColumn = location[0];
-  //   while(true) {
-    
-  //   for (let column =currentColumn ; column < gridMatrix.length; column++) {
-  //     if (isRunning.current === "pause") {
-  //       setLocation([column, 0]);
-  //       return;
-  //     }
-  //     if (isRunning.current === "stop") {
-  //       setLocation([0, 0]);
-  //       return;
-  //     }
-  //     for (let row = location[1]; row < gridMatrix[column].length; row++) {
-  //       if (gridMatrix[column][row]) {
-  //         const currentAudio = new Audio(url[musical][row]);
-  //         currentAudio.volume = volumeRef.current;
-  //         currentAudio.play()
-  //       }
-        
-  //     }
-  //     await new Promise((res) => setTimeout(res, speedRef.current));
-  //   }
-  //   currentColumn=0;
-  // };
-  // };
-
   const presPlay=()=>{
     toggleRunning();
     if (currentColumn<0) {
